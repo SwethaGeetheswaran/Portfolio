@@ -2,6 +2,10 @@
   main #home h1 {
     margin-top: 10wh;
   }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
 
 @include mediaMedium {
@@ -51,10 +55,20 @@
       "job2";
     grid-template-columns: 1fr;
   }
+
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @include mediaLarge {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @include mediaXLarge {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
