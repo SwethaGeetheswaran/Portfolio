@@ -1,5 +1,6 @@
 @import "config";
 @import "menu";
+@import "mobile";
 
 * {
   box-sizing: border-box;
@@ -7,7 +8,7 @@
 
 body {
   background: $primary-color;
-  color: #fff;
+  color: set-text-color($primary-color);
   height: 100%;
   margin: 0;
   @include background;
@@ -48,8 +49,7 @@ header {
 
 main {
   padding: 4rem;
-  height: 100%;
-
+  min-height: calc(100vh - 60px);
   &#home {
     overflow: hidden;
     h1 {
@@ -68,4 +68,111 @@ main {
       }
     }
   }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio"
+    "job1 job2";
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.bio-image {
+  grid-area: bioimage;
+  margin: auto;
+  border-radius: 50%;
+  border: $secondary-color 3px solid;
+}
+
+.bio {
+  grid-area: bio;
+  font-size: 1.5rem;
+}
+
+.job1 {
+  grid-area: job1;
+}
+
+.job2 {
+  grid-area: job2;
+}
+
+.job {
+  background: lighten($color: $primary-color, $amount: 5);
+  padding: 0.5rem;
+  border-bottom: $secondary-color 5px solid;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      transition: all 0.5s ease-out;
+    }
+  }
+}
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($color: $primary-color, $amount: 50);
+  color: #ffff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($color: $primary-color, $amount: 50);
+  color: #3333;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+#main-footer {
+  padding: 1rem;
+  text-align: center;
+  background: darken($color: #c0c0c0, $amount: 10);
+  color: set-text-color($primary-color);
 }
