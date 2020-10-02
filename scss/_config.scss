@@ -1,4 +1,4 @@
-$primary-color: #444;
+$primary-color: #000;
 $secondary-color: #eece1a;
 $show-home-image: true;
 $home-image: url(../img/background.jpg);
@@ -21,5 +21,37 @@ $background-opacity: 0.9;
         background-color: rgba($primary-color, $background-opacity);
       }
     }
+  }
+}
+
+@mixin mediaSmall {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mediaMedium {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mediaLarge {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin mediaXLarge {
+  @media screen and (min-width: 1171px) {
+    @content;
+  }
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return #000;
+  } @else {
+    @return #fff;
   }
 }
